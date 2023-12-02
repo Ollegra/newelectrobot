@@ -18,10 +18,9 @@ locale.setlocale(locale.LC_ALL, '')
 
 dotenv.load_dotenv()
 
-db_start()
 
 async def main():
-    bot = Bot(token=os.getenv('TOKEN_API'), parse_mode=ParseMode.HTML)
+    bot = Bot(token=os.getenv("TOKEN_API"), parse_mode=ParseMode.HTML)
     dp = Dispatcher(bot=bot, storage=MemoryStorage())
     dp.include_router(router)
     await bot.delete_webhook(drop_pending_updates=True)
@@ -32,6 +31,6 @@ if __name__ == '__main__':
   
     logging.basicConfig(level=logging.INFO)
     #logging.basicConfig(level=logging.INFO, format='%(asctime)s : %(name)s : %(levelname)s : %(message)s', encoding='UTF-8')
-    
+    db_start()
     asyncio.run(main())
 
