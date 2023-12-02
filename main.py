@@ -1,5 +1,3 @@
-# aiogram==3.0.0b7
-# pip install python-dotenv
 import asyncio
 import logging
 from backg import keep_alive
@@ -12,12 +10,14 @@ from bot_db import db_start
 import os
 import dotenv
 import locale
-
+# aiogram==3.0.0b7
+# pip install python-dotenv
 
 locale.setlocale(locale.LC_ALL, '')
 
 dotenv.load_dotenv()
 
+db_start()
 
 async def main():
     bot = Bot(token=os.getenv("TOKEN_API"), parse_mode=ParseMode.HTML)
@@ -31,6 +31,6 @@ if __name__ == '__main__':
   
     logging.basicConfig(level=logging.INFO)
     #logging.basicConfig(level=logging.INFO, format='%(asctime)s : %(name)s : %(levelname)s : %(message)s', encoding='UTF-8')
-    db_start()
+    
     asyncio.run(main())
 
